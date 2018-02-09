@@ -1,9 +1,9 @@
 ---
 
-- name: Create FPP user
+- name: Create non-root user
   user: >
     name="{{ ssh_user }}"
-    comment="FPP admin account"
+    comment="Admin user"
     state=present
     groups="{{ ssh_groups }}"
     shell=/bin/bash

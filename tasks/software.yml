@@ -5,8 +5,9 @@
   apt: pkg="{{ item }}" state=latest
   with_items:
     - ntp
+    - git
 
 - name: Ensure services is running and enabled
-  service: name="{{ item }}" state=running enabled=yes
+  service: name="{{ item }}" state=started enabled=yes
   with_items:
     - ntp

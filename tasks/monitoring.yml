@@ -1,0 +1,10 @@
+---
+
+- name: Get DO monitoring agent
+  get_url:
+    url: https://agent.digitalocean.com/install.sh -o /tmp/install.sh
+    dest: /tmp/install.sh
+    mode: 0700
+
+- name: Install DO agent
+  shell: /tmp/install.sh
