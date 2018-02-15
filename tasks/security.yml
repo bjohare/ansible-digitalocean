@@ -25,10 +25,3 @@
     - { key: 'AllowGroups',            value: '{{ ssh_groups }}' }
     - { key: 'ChallengeResponseAuthentication', value: 'no'}
   notify: restart sshd
-
-# - name: Configure firewall for SSH
-#   ufw: rule=allow port={{ item }}
-#   with_items: "{{ ufw_allow_ports }}"
-#
-# - name: Enable firewall
-#   ufw: state=enabled

@@ -23,16 +23,9 @@
         ssh_key_ids={{ do_droplet.ssh_key.id }}
         unique_name=yes
         private_networking=yes
+        backups_enabled={{ do_backups_enabled }}
         api_token={{ do_api_token }}
       register: do_droplet
-
-    # - name: Register DNS
-    #   digital_ocean_domain: >
-    #     state=present
-    #     name="{{ do_dns }}"
-    #     id="{{ do_droplet.droplet.id }}"
-    #     api_token={{ do_api_token }}
-    #   when: do_dns|length > 0
 
     - debug: msg="IP is {{ do_droplet.droplet.ip_address }}"
 
@@ -46,10 +39,10 @@
         ansible_ssh_private_key_file="{{ do_ssh_private_key }}"
 
 
-    - name: Wait 300 seconds for ssh connection, but only start checking after 10 seconds
+    - name: Wait 120 seconds for ssh connection
       wait_for_connection:
           delay: 10
-          timeout: 300
+          timeout: 120
 
 - hosts: dohosts
 
